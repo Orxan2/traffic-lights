@@ -1,0 +1,25 @@
+{
+    "name": "praktika",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "node-sass": "^6.0.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "css": "node-sass assets/scss/style.scss -o assets/css",
+        "css:watch": "npm run css && node-sass --output-style compressed assets/scss/style.scss -wo assets/css"
+    },
+
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Orxan2/traffic-lights.git"
+    },
+    "author": "Orxan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Orxan2/traffic-lights/issues"
+    },
+    "homepage": "https://github.com/Orxan2/traffic-lights#readme"
+}

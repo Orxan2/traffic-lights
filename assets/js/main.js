@@ -1,7 +1,7 @@
 window.addEventListener('load', function(params) {
     let container = document.querySelector('.container');
     let colors = ['red', 'yellow', 'green'];
-
+    let time = 10;
 
 
     function CreateHtmlElements(params) {
@@ -21,61 +21,89 @@ window.addEventListener('load', function(params) {
             traffic.appendChild(traffic_light);
         }
 
-        // let timer = document.createElement('div');
-        // timer.classList.add("timer");
+        let timer = document.createElement('div');
+        timer.classList.add("timer");
+
+        let span = document.createElement('span');
+        // span.classList.add("timer");
+        timer.appendChild(span);
+
 
         container.appendChild(traffic);
+        traffic.appendChild(timer);
 
     }
-
-
-
-
     CreateHtmlElements();
 
     function TrafficLights() {
         let lights = this.document.querySelectorAll('.traffic__light');
 
-        function BrightRed() {
-            setTimeout(() => {
+
+        function BrightRed(second) {
+
+            setTimeout((second) => {
+                time = 10;
                 let color = lights[0].getAttribute('data-color');
                 lights[2].style.boxShadow = `none`;
                 lights[0].style.boxShadow = `0 0 20px 14px ${color}`;
-            }, 1000);
+
+            }, second);
         }
 
-        function BrightYellow() {
+        function BrightYellow(second) {
+
             setTimeout(() => {
+                time = 2;
                 let color = lights[1].getAttribute('data-color');
                 lights[0].style.boxShadow = `none`;
                 lights[1].style.boxShadow = `0 0 20px 14px ${color}`;
-            }, 10000);
+
+            }, second);
         }
 
 
-        function BrightGreen() {
+        function BrightGreen(second) {
+
             setTimeout(() => {
+
+                time = 15;
                 let color = lights[2].getAttribute('data-color');
                 lights[1].style.boxShadow = `none`;
                 lights[2].style.boxShadow = `0 0 20px 14px ${color}`;
-            }, 12000);
+
+            }, second);
         }
 
-        BrightRed();
-        BrightYellow();
-        BrightGreen();
+
+
+        BrightRed(0);
+        BrightYellow(11000);
+        BrightGreen(13000);
 
         setInterval(() => {
+            BrightRed(0);
+            BrightYellow(11000);
+            BrightGreen(13500);
+        }, 28000);
 
-            BrightRed();
-            BrightYellow();
-            BrightGreen();
 
-        }, 12000);
+
 
     }
 
     //Trafic Light Operation
     TrafficLights();
+
+
+    setInterval(() => {
+        let x = document.querySelector('span');
+
+        x.textContent = time;
+        time -= 1;
+
+
+
+    }, 1000);
+
 
 });
